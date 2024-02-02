@@ -1,0 +1,55 @@
+{% extends '/base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+    <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap4.min.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+        <div class="card-body">
+            <table id="myTable" class="table table-striped compact">
+                <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Превод</th>
+                    <th>Ошибок</th>
+                    <th>Успехов</th>
+                    <th>Last Try</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for word in data %}
+                    <tr>
+                        <td>{{ word.eng }}</td>
+                        <td>{{ word.rus }}</td>
+                        <td>{{ word.error }}</td>
+                        <td>{{ word.success }}</td>
+                        <td>{{ word.last_try|default('') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap4.min.js') }}"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+                paging: false,
+                scrollCollapse: true,
+                scrollY: '700px'
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,11 @@
+main:
+    path: /
+    controller: App\Presentation\Web\Controller\MainController::action
+
+list:
+    path: /list
+    controller: App\Presentation\Web\Controller\WordListController::action
+
+AddAdditionalWord:
+    path: /addAdditionalWord
+    controller: App\Presentation\Web\Controller\AddAdditionalWordController::action

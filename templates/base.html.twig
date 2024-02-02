@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}1000 Words!{% endblock %}</title>
+        {% block stylesheets %}
+            {# Иконки Font Awesome #}
+            <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
+            {# Google Font: Source Sans Pro #}
+            <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700') }}">
+        {% endblock %}
+        {# Собственные стили #}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="header">
+                <div class="user-panel d-flex">
+                    <div class="image">
+                        <img src="{{ asset('img/user.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Admin</a>
+                    </div>
+                </div>
+                <div class="">
+                    <a href="{{ path('main') }}" class="btn btn-block btn-primary">Играть</a>
+                </div>
+            </header>
+            <div class="content">
+                {% block body %}
+
+                {% endblock %}
+            </div>
+
+        </div>
+    </body>
+
+
+    {% block javascripts %}
+        <script src="{{ asset('/js/jquery/jquery.min.js') }}"></script>
+    {% endblock %}
+</html>

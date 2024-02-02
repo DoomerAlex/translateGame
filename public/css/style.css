@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(244, 246, 249);
+}
+input:focus {
+    outline: none;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+.content {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.game-frame {
+    border: 2px solid grey;
+    border-radius: 20px;
+    padding: 50px;
+    background-color: #ffffff;
+}
+.game-frame.success {
+    background-color: rgba(40,167,69,0.3);
+    border-color: rgb(40,167,69);
+}
+.game-frame.error {
+    background-color: rgba(354,76,86,0.3);
+    border-color: rgb(354,76,86);
+}
+.game-frame .en-word {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+.form-row {
+    display: flex;
+    margin: 0 auto 25px;
+}
+.form-input {
+    display: block;
+    width: 75%;
+    min-width: 300px;
+    border-top: none;
+    border-bottom: 2px solid black;
+    border-left: none;
+    border-right: none;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: inherit;
+}
+.form-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+.form-buttons a.btn{
+    margin-top: 8px;
+}
+.form-buttons .btn {
+    width: 40%;
+    max-width: 350px;
+}
+.form-submit {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    max-width: 200px;
+    font-size: 26px;
+    text-align: center;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+.additional-title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.additional-values {
+    font-size: 16px;
+    text-align: center;
+}

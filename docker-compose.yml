@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+
+  nginx:
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+    container_name: translateGame-nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - php-fpm
+    volumes:
+      - ./public:/ui
+
+  php-fpm:
+    build:
+      context: docker/php-8.2
+      dockerfile: Dockerfile
+    container_name: translateGame-app
+    restart: always
+    volumes:
+      - ./:/var/www
+      - ./docker/php-8.2/php.ini:/usr/local/etc/php/php.ini
+    ports:
+      - 9000:9000
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: translateGame-db
+    ports:
+      - 54321:5432
+    environment:
+      POSTGRES_PASSWORD: "74657465"
+      POSTGRES_USER: "service"
+      POSTGRES_DB: "translate_game"
+    volumes:
+      - ./var/postgres/data:/var/lib/postgresql/data

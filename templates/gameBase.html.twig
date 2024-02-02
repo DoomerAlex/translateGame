@@ -1,0 +1,39 @@
+{% extends '/base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-8">
+            {% block gameBody %}
+
+            {% endblock %}
+        </div>
+        <div class="col-4">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>1000</h3>
+                    <p>Самых популярных слов</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <a href="{{ path('list') }}" class="small-box-footer">
+                    Посмотреть список <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+
+            <div class="info-box bg-info">
+                <span class="info-box-icon"><i class="far fa-chart-pie"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Статистика</span>
+                    <span class="info-box-number">{{ progress }} / 1000</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: {{ progress / 10 }}%"></div>
+                    </div>
+                    <span class="progress-description">{{ progress / 10 }}% слов выучено!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

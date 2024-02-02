@@ -1,0 +1,40 @@
+{% extends '/gameBase.html.twig' %}
+
+{% block gameBody %}
+    <div class="game-frame {% if success is same as(true) %} success
+        {% elseif success is same as(false) %} error {% endif %}">
+
+        <div title="{{ rus }}" class="en-word">
+            {{ eng }}
+        </div>
+
+        <div class="form">
+            {{ form_start(form) }}
+            {{ form_widget(form.eng) }}
+            <div class="form-row">
+                {{ form_widget(form.rus, {'required': false, 'attr': {'class': 'form-input', 'autofocus': 'autofocus'}}) }}
+            </div>
+            <div class="form-buttons">
+                <button type="submit" id="submit" class="btn btn-block btn-primary btn-lg">Пропустить</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(".form-input").on('input', function() {
+            let val = $(this).val().length;
+            if (val === 1) {
+                $('#submit').html('Проверить');
+            } else if (val === 0) {
+                $('#submit').html('Пропустить');
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends '/gameBase.html.twig' %}
+
+{% block gameBody %}
+
+    <div class="game-frame error">
+
+        <div class="en-word">
+            {{ eng }} - {{ rus }}
+        </div>
+
+        <div class="form">
+            {{ form_start(form, {action: 'addAdditionalWord', 'attr': {'id': 'form'}}) }}
+            {{ form_widget(form.eng) }}
+            <div class="form-row">
+                {{ form_widget(form.rus, {'required': false, 'attr': {'class': 'form-input', 'readonly': 'readonly'}}) }}
+            </div>
+            <div class="form-buttons">
+                    <a href="{{ path('main') }}" class="btn btn-block btn-primary btn-lg">Ок!</a>
+
+                {% if form.rus.vars.data %}
+                    <button type="submit" class="btn btn-block btn-primary btn-lg" id="form-submit">Добавить значение</button>
+                {% endif %}
+            </div>
+            {{ form_end(form) }}
+            <div>
+                {% if additional|default(false) %}
+                    <div class="additional-title">Возможные значения:</div>
+                    <div class="additional-values">
+                        {% for val in additional %}
+                            {{ val }},
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $("#form").submit(function(e) {
+            if (!confirm('Проверили в словаре?')) {
+                e.preventDefault();
+            }
+        });
+
+        $(document).on('keypress',function(e) {
+            if(e.which === 13) {
+                window.location.replace("{{ path('main') }}");
+            }
+        });
+
+    </script>
+{% endblock %}
+
